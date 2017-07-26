@@ -1,5 +1,9 @@
 package com.liliangliang.PM25.entry;
-
+/**
+ * 
+ * @author Administrator
+ *
+ */
 public class Aqi {
 
 	private int aqi;
