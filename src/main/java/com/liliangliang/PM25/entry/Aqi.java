@@ -1,18 +1,33 @@
 package com.liliangliang.PM25.entry;
+
+import java.util.Date;
+
 /**
  * 
  * @author Administrator
- *
+ * 
  */
 public class Aqi {
 
 	private int aqi;
 	private String area;
+	private double co;
+	private double co_24h;
+	private int no2;
+	private int no2_24h;
+	private int o3;
+	private int o3_24h;
+	private int o3_8h;
+	private int o3_8h_24h;
+	private int pm10;
+	private int pm10_24h;
 	private int pm2_5;
 	private int pm2_5_24h;
 	private String position_name;
 	private String primary_pollutant;
 	private String quality;
+	private int so2;
+	private int so2_24h;
 	private String station_code;
 	private String time_point;
 
@@ -30,6 +45,86 @@ public class Aqi {
 
 	public void setArea(String area) {
 		this.area = area;
+	}
+
+	public double getCo() {
+		return co;
+	}
+
+	public void setCo(double co) {
+		this.co = co;
+	}
+
+	public double getCo_24h() {
+		return co_24h;
+	}
+
+	public void setCo_24h(double co_24h) {
+		this.co_24h = co_24h;
+	}
+
+	public int getNo2() {
+		return no2;
+	}
+
+	public void setNo2(int no2) {
+		this.no2 = no2;
+	}
+
+	public int getNo2_24h() {
+		return no2_24h;
+	}
+
+	public void setNo2_24h(int no2_24h) {
+		this.no2_24h = no2_24h;
+	}
+
+	public int getO3() {
+		return o3;
+	}
+
+	public void setO3(int o3) {
+		this.o3 = o3;
+	}
+
+	public int getO3_24h() {
+		return o3_24h;
+	}
+
+	public void setO3_24h(int o3_24h) {
+		this.o3_24h = o3_24h;
+	}
+
+	public int getO3_8h() {
+		return o3_8h;
+	}
+
+	public void setO3_8h(int o3_8h) {
+		this.o3_8h = o3_8h;
+	}
+
+	public int getO3_8h_24h() {
+		return o3_8h_24h;
+	}
+
+	public void setO3_8h_24h(int o3_8h_24h) {
+		this.o3_8h_24h = o3_8h_24h;
+	}
+
+	public int getPm10() {
+		return pm10;
+	}
+
+	public void setPm10(int pm10) {
+		this.pm10 = pm10;
+	}
+
+	public int getPm10_24h() {
+		return pm10_24h;
+	}
+
+	public void setPm10_24h(int pm10_24h) {
+		this.pm10_24h = pm10_24h;
 	}
 
 	public int getPm2_5() {
@@ -72,6 +167,22 @@ public class Aqi {
 		this.quality = quality;
 	}
 
+	public int getSo2() {
+		return so2;
+	}
+
+	public void setSo2(int so2) {
+		this.so2 = so2;
+	}
+
+	public int getSo2_24h() {
+		return so2_24h;
+	}
+
+	public void setSo2_24h(int so2_24h) {
+		this.so2_24h = so2_24h;
+	}
+
 	public String getStation_code() {
 		return station_code;
 	}
@@ -79,6 +190,7 @@ public class Aqi {
 	public void setStation_code(String station_code) {
 		this.station_code = station_code;
 	}
+
 
 	public String getTime_point() {
 		return time_point;
@@ -90,10 +202,15 @@ public class Aqi {
 
 	@Override
 	public String toString() {
-		return "Aqi [aqi=" + aqi + ", 地点=" + area + ", pm2.5" + pm2_5
-				+ ", pm2.5一天平均值=" + pm2_5_24h + ", 检测点名称=" + position_name
-				+ ", 主要污染物=" + primary_pollutant + ", 空气级别=" + quality
-				+ ", 监测点编号=" + station_code + ", 时间=" + time_point + "]";
+		return "Aqi [空气质量=" + aqi + ", 城市=" + area + ", 一氧化碳=" + co
+				+ ", 一氧化碳平均=" + co_24h + ", 二氧化氮=" + no2 + ", 二氧化氮=" + no2_24h
+				+ ", 臭氧=" + o3 + ", 臭氧一天=" + o3_24h + ", 臭氧8小时=" + o3_8h
+				+ ", 臭氧=" + o3_8h_24h + ", pm10=" + pm10 + ", pm10平均="
+				+ pm10_24h + ", pm2.5=" + pm2_5 + ", pm2.5平均=" + pm2_5_24h
+				+ ", 监测点数据=" + position_name + ", 主要污染物=" + primary_pollutant
+				+ ", 空气质量指数=" + quality + ", 二氧化硫=" + so2 + ", 二氧化硫平均="
+				+ so2_24h + ", 监测点编号=" + station_code + ", 时间=" + time_point
+				+ "]";
 	}
 
 }
