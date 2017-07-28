@@ -9,5 +9,7 @@ public interface AqiService {
 	int insert(List<Aqi> list);
 	
 	int insert(Aqi aqi);
+	
+	List<Aqi> getNow();
 
 }

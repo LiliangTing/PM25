@@ -10,5 +10,7 @@ public interface AqiDAO {
 	
 	int insert(Aqi aqi);
 	
+	List<Aqi> getNow();
+	
 
 }

@@ -86,4 +86,8 @@
 
 	</insert>
 
+	<select id="getNow" resultType="Aqi">
+		call now_data();
+	</select>
+
 </mapper>

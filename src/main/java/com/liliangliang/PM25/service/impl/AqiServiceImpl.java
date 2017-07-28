@@ -25,4 +25,10 @@ public class AqiServiceImpl implements AqiService {
 		return this.aqiDAO.insert(aqi);
 	}
 
+	@Override
+	public List<Aqi> getNow() {
+		return this.aqiDAO.getNow();
+
+	}
+
 }
