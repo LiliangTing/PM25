@@ -9,29 +9,33 @@ import org.springframework.stereotype.Component;
 
 import com.liliangliang.PM25.entry.Aqi;
 import com.liliangliang.PM25.service.AqiService;
+import com.liliangliang.PM25.service.JsonsService;
+import com.liliangliang.PM25.util.AppInfo;
 import com.liliangliang.PM25.util.HttpUtil;
 import com.liliangliang.PM25.util.JsonUtil;
 
 @Component
 public class ScheduledTask {
 	@Autowired
-	AqiService aqiService;
+	private AqiService aqiService;
+	@Autowired
+	private JsonsService jsonsService;
 
-	private static final String utl = "	http://www.pm25.in/api/querys/aqis_by_station.json?tocken=5j1znBVAsnSf5xQyNQyq";
+	
 
 	@Scheduled(cron = "0 53 * * * ?")
 	public void reportCurrentTimeCron() throws InterruptedException {
-		String json = HttpUtil.HttpGetJson(utl);
+		String json = HttpUtil.HttpGetJson(AppInfo.url+AppInfo.tocken);
 		System.out.println(new Date());
 		List<Aqi> list = JsonUtil.jsonConver(json);
 		if (list == null) {
-			
+			this.jsonsService.insert(json, 0);
 			System.out.println("失败！10分钟后重试");
-			//Thread.sleep(600000);
-			//reportCurrentTimeCron();
-
+			Thread.sleep(600000);
+			reportCurrentTimeCron();
 		} else {
 			this.aqiService.insert(list);
+			this.jsonsService.insert(json, 1);
 			System.out.println("完成");
 		}
 	}
