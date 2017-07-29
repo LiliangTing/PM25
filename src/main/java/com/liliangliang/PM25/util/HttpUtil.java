@@ -8,8 +8,12 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class HttpUtil {
+	private static Logger logger = LoggerFactory.getLogger(HttpUtil.class);
+
 	public static String HttpGetJson(String url) {
 
 		// 创建默认的httpClient实例
@@ -18,7 +22,7 @@ public class HttpUtil {
 			// 用get方法发送http请求
 			HttpGet get = new HttpGet(
 					"http://www.pm25.in/api/querys/aqi_ranking.json?token=5j1znBVAsnSf5xQyNQyq");
-			System.out.println("执行get请求:...." + get.getURI());
+			logger.info("执行get请求:...." + get.getURI());
 			CloseableHttpResponse httpResponse = null;
 			// 发送get请求
 			httpResponse = httpClient.execute(get);
@@ -43,10 +47,19 @@ public class HttpUtil {
 		return "";
 	}
 
+	/**获取默认HttpClient
+	 *
+	 * @return
+	 */
 	private static CloseableHttpClient getHttpClient() {
 		return HttpClients.createDefault();
 	}
 
+	/** 关闭HttpClient
+	 *
+	 * @param client
+	 * @throws IOException
+	 */
 	private static void closeHttpClient(CloseableHttpClient client)
 			throws IOException {
 		if (client != null) {
