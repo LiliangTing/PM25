@@ -3,6 +3,12 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.liliangliang.PM25.dao.AqiDAO">
+
+	<resultMap type="MapData" id="MapDataMap">
+
+		<result property="name" column="area" />
+		<result property="value" column="aqi" />
+	</resultMap>
 	<sql id="insertSql">
 		aqi,
 		area,
@@ -82,12 +88,12 @@
 		#{station_code} ,
 		#{time_point}
 		)
-
-
 	</insert>
-
 	<select id="getNow" resultType="Aqi">
 		call now_data();
 	</select>
-
+	<!-- 获取地图数据 -->
+	<select id="getMapData" resultMap="MapDataMap">
+		call now_data();
+	</select>
 </mapper>

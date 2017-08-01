@@ -71,98 +71,42 @@
 				</thead>
 				<tbody id="tablebody">
 					<c:forEach items="${list}" var="a" varStatus="status">
-						<c:if test="${a.aqi < '51'}">
-							<tr class="aqi1">
-								<td>排名： ${status.index+1 }</td>
-								<td>指数： ${a.aqi}</td>
-								<td>城市： ${a.area}</td>
-								<td>一氧化碳： ${a.co}</td>
-								<td>二氧化氮： ${a.no2}</td>
-								<td>臭氧： ${a.o3}</td>
-								<td>PM10： ${a.pm10}</td>
-								<td>PM2.5: ${a.pm2_5}</td>
-								<td>指数： ${a.quality}</td>
-								<td>二氧化硫： ${a.so2}</td>
-								<td>${a.time_point}</td>
-							</tr>
-						</c:if>
-						<c:if test=" ${a.aqi > '50'} ">
-							<c:if test=" ${  a.aqi< '101'} ">
-								<tr class="aqi2">
-									<td>排名： ${status.index+1 }</td>
-									<td>指数： ${a.aqi}</td>
-									<td>城市： ${a.area}</td>
-									<td>一氧化碳： ${a.co}</td>
-									<td>二氧化氮： ${a.no2}</td>
-									<td>臭氧： ${a.o3}</td>
-									<td>PM10： ${a.pm10}</td>
-									<td>PM2.5: ${a.pm2_5}</td>
-									<td>指数： ${a.quality}</td>
-									<td>二氧化硫： ${a.so2}</td>
-									<td>${a.time_point}</td>
-								</tr>
+						<tr>
+							<td>${status.index+1 }</td>
+
+							<c:if test="${a.aqi < '51'}">
+								<td class="aqi1">${a.aqi}</td>
+								<td class="aqi1">${a.area}</td>
 							</c:if>
-						</c:if>
-						<c:if test=" ${a.aqi>='101'&&   a.aqi<'150'} ">
-							<tr class="aqi3">
-								<td>排名： ${status.index+1 }</td>
-								<td>指数： ${a.aqi}</td>
-								<td>城市： ${a.area}</td>
-								<td>一氧化碳： ${a.co}</td>
-								<td>二氧化氮： ${a.no2}</td>
-								<td>臭氧： ${a.o3}</td>
-								<td>PM10： ${a.pm10}</td>
-								<td>PM2.5: ${a.pm2_5}</td>
-								<td>指数： ${a.quality}</td>
-								<td>二氧化硫： ${a.so2}</td>
-								<td>${a.time_point}</td>
-							</tr>
-						</c:if>
-						<c:if test=" ${a.aqi>='151'  &&   a.aqi<'200'} ">
-							<tr class="aqi4">
-								<td>排名： ${status.index+1 }</td>
-								<td>指数： ${a.aqi}</td>
-								<td>城市： ${a.area}</td>
-								<td>一氧化碳： ${a.co}</td>
-								<td>二氧化氮： ${a.no2}</td>
-								<td>臭氧： ${a.o3}</td>
-								<td>PM10： ${a.pm10}</td>
-								<td>PM2.5: ${a.pm2_5}</td>
-								<td>指数： ${a.quality}</td>
-								<td>二氧化硫： ${a.so2}</td>
-								<td>${a.time_point}</td>
-							</tr>
-						</c:if>
-						<c:if test=" ${a.aqi>='201'&&  a.aqi<'300'} ">
-							<tr class="aqi5">
-								<td>排名： ${status.index+1 }</td>
-								<td>指数： ${a.aqi}</td>
-								<td>城市： ${a.area}</td>
-								<td>一氧化碳： ${a.co}</td>
-								<td>二氧化氮： ${a.no2}</td>
-								<td>臭氧： ${a.o3}</td>
-								<td>PM10： ${a.pm10}</td>
-								<td>PM2.5: ${a.pm2_5}</td>
-								<td>指数： ${a.quality}</td>
-								<td>二氧化硫： ${a.so2}</td>
-								<td>${a.time_point}</td>
-							</tr>
-						</c:if>
-						<c:if test=" ${a.aqi>'300'} ">
-							<tr class="aqi6">
-								<td>排名： ${status.index+1 }</td>
-								<td>指数： ${a.aqi}</td>
-								<td>城市： ${a.area}</td>
-								<td>一氧化碳： ${a.co}</td>
-								<td>二氧化氮： ${a.no2}</td>
-								<td>臭氧： ${a.o3}</td>
-								<td>PM10： ${a.pm10}</td>
-								<td>PM2.5: ${a.pm2_5}</td>
-								<td>指数： ${a.quality}</td>
-								<td>二氧化硫： ${a.so2}</td>
-								<td>${a.time_point}</td>
-							</tr>
-						</c:if>
+							<c:if test="${a.aqi > 50 && a.aqi < '101'}">
+								<td class="aqi2">${a.aqi}</td>
+								<td class="aqi2">${a.area}</td>
+							</c:if>
+							<c:if test="${a.aqi > '100' && a.aqi < '151'}">
+								<td class="aqi3">${a.aqi}</td>
+								<td class="aqi3">${a.area}</td>
+							</c:if>
+							<c:if test="${a.aqi > '150' && a.aqi < '201'}">
+								<td class="aqi4">${a.aqi}</td>
+								<td class="aqi4">${a.area}</td>
+							</c:if>
+							<c:if test="${a.aqi > '200' && a.aqi < '301'}">
+								<td class="aqi5">${a.aqi}</td>
+								<td class="aqi5">${a.area}</td>
+							</c:if>
+							<c:if test="${a.aqi > '300'}">
+								<td class="aqi6">${a.aqi}</td>
+								<td class="aqi6">${a.area}</td>
+							</c:if>
+							<td>${a.co}</td>
+							<td>${a.no2}</td>
+							<td>${a.o3}</td>
+							<td>${a.pm10}</td>
+							<td>${a.pm2_5}</td>
+							<td>${a.quality}</td>
+							<td>${a.so2}</td>
+							<td>${a.time_point}</td>
+						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
