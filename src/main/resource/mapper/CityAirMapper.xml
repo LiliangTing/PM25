@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liliangliang.core.dao.CityAirDAO">
+	<!-- 基本的映射 -->
+	<resultMap type="CityAir" id="CityAirMap">
+		<id property="id" column="id" />
+		<result property="citycode" column="citycode" />
+		<result property="time" column="times" />
+		<result property="aqi" column="aqi" />
+		<result property="pm25" column="pm25" />
+		<result property="pm10" column="pm10" />
+		<result property="co" column="co" />
+		<result property="so2" column="so2" />
+		<result property="o3" column="o3" />
+		<result property="no2" column="no2" />
+		<result property="primary" column="prima" />
+		<result property="createTime" column="create_time" />
+		<association property="city" column="citycode" javaType="City"
+			select="com.liliangliang.core.dao.getById" />
+	</resultMap>
+	<!-- 地图需要的数据 -->
+	<resultMap type="MapData" id="MapDataMap">
+		<result property="value" column="aqi" />
+		<association property="name" column="citycode"
+			select="com.liliangliang.core.dao.getNameById" />
+	</resultMap>
+	<sql id="BasisSql">
+		id,citycode,times,aqi,pm25,pm10,co,so2,no2,o3,prima,create_time
+	</sql>
+	<sql id="MapSql">
+		citycode,aqi
+	</sql>
+	<sql id="insertSql">
+		citycode,times,aqi,pm25,pm10,co,so2,no2,o3,prima
+	</sql>
+	<!-- <insert id="insertList"> insert into aqi( <include refid="insertSql" 
+		/> )values <foreach item="a" collection="list" separator=","> (#{a.aqi}, 
+		#{a.area} , #{a.co}, #{a.co_24h} , #{a.no2} , #{a.no2_24h}, #{a.o3}, #{a.o3_24h} 
+		, #{a.o3_8h}, #{a.o3_8h_24h} , #{a.pm10} , #{a.pm10_24h}, #{a.pm2_5}, #{a.pm2_5_24h}, 
+		#{a.position_name}, #{a.primary_pollutant}, #{a.quality}, #{a.so2}, #{a.so2_24h} 
+		, #{a.station_code} , #{a.time_point}) </foreach> </insert> -->
+
+	<insert id="insert">
+		insert into aqi(
+		<include refid="insertSql" />
+		)values
+		(
+		#{citycode},#{time},#{aqi},#{pm25},#{pm10},#{co},#{so2},#{no2},#{o3},#{primary}
+		)
+	</insert>
+</mapper>

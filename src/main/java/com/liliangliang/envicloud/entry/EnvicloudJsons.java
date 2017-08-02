@@ -8,30 +8,54 @@ public class EnvicloudJsons {
 	private String jsontext;
 	private Date createTime;
 	private int status;
+	private String type;
+
+	public EnvicloudJsons() {
+	}
+
+	public EnvicloudJsons(String jsontext, String type) {
+		this.jsontext = jsontext;
+		this.type = type;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getJsontext() {
 		return jsontext;
 	}
+
 	public void setJsontext(String jsontext) {
 		this.jsontext = jsontext;
 	}
+
 	public Date getCreateTime() {
 		return createTime;
 	}
+
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
+
 	public int getStatus() {
 		return status;
 	}
+
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	
 
 }

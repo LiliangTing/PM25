@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liliangliang.core.dao.CityDAO">
+	<resultMap type="City" id="CityMap">
+		<id property="citycode" column="citycode" />
+		<result property="cityname" column="cityname" />
+		<result property="districtcn" column="belong" />
+		<result property="cityname" column="cityname" />
+	</resultMap>
+	<sql id="BasisSql">
+		citycode,cityname,districtcn,aqicode
+	</sql>
+	<!-- 按照城市编码找到城市 -->
+	<select id="getById" resultMap="CityMap">
+		select
+		<include refid="BasisSql" />
+		from city where citycode = #{citycode}
+	</select>
+	<!-- 按照是否有空气质量城市 -->
+	<select id="getByType" resultMap="CityMap">
+		select
+		<include refid="BasisSql" />
+		from city where aqicode = #{type}
+	</select>
+	<!-- 按照城市名称查找城市 -->
+	<select id="getByName" resultMap="CityMap">
+		select
+		<include refid="BasisSql" />
+		from city where cityname like concat('#{name}','%') or nameen like
+		concat('#{name}','%')
+	</select>
+	<!-- 按照城市编码获取城市名称 -->
+	<select id="getNameById" resultType="string">
+		select cityname from city
+		where citycode=#{citycode}
+	</select>
+	<update id="setAqiCode">
+		update city set aqicode =1 where citycode
+		=#{citycode}
+	</update>
+</mapper>

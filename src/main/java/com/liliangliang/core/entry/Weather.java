@@ -1,29 +1,69 @@
 package com.liliangliang.core.entry;
 
+import java.util.Date;
+
 /**
  * 天气预报和指数
  * 
  * @author Administrator
  * 
  */
-public class Weatherlive {
-
-	private String updatetime;
+public class Weather {
+	private int id;
+	// 城市编码
+	private String citycode;
+	// 记录创建时间
+	private Date createTime;
+	// 更新时间
+	private Date updatetime;
+	// 天气现象
 	private String phenomena;
+	// 气温
 	private String temperature;
+	// 体感温度
 	private String feelst;
+	// 气压
 	private String airpressure;
+	// 相对湿度
 	private String humidity;
+	// 降雨量
 	private String rain;
+	// 风向
 	private String winddirect;
+	// 风力
 	private String windpower;
+	// 风速
 	private String windspeed;
 
-	public String getUpdatetime() {
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getCitycode() {
+		return citycode;
+	}
+
+	public void setCitycode(String citycode) {
+		this.citycode = citycode;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public Date getUpdatetime() {
 		return updatetime;
 	}
 
-	public void setUpdatetime(String updatetime) {
+	public void setUpdatetime(Date updatetime) {
 		this.updatetime = updatetime;
 	}
 
@@ -101,7 +141,8 @@ public class Weatherlive {
 
 	@Override
 	public String toString() {
-		return "实时天气 [更新时间=" + updatetime + ", 天气现象=" + phenomena + ", 气温="
+		return "天气 [编号=" + id + ", 城市编码=" + citycode + ", 创建时间=" + createTime
+				+ ", 记录更新时间=" + updatetime + ", 天气现象=" + phenomena + ", 气温="
 				+ temperature + ", 体感温度=" + feelst + ", 气压=" + airpressure
 				+ ", 相对湿度=" + humidity + ", 降雨量=" + rain + ", 风向=" + winddirect
 				+ ", 风力=" + windpower + ", 风速=" + windspeed + "]";

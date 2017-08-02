@@ -1,17 +1,14 @@
-package com.liliangliang.core.service;
+package com.liliangliang.core.dao;
 
 import java.util.List;
 
 import com.liliangliang.core.entry.CityAir;
 import com.liliangliang.core.entry.MapData;
+import com.liliangliang.envicloud.entry.EnvicloudCityAirLive;
 
+public interface CityAirDAO {
 
-
-public interface CityAirService {
-
-	int insert(List<CityAir> list);
-
-	int insert(CityAir aqi);
+	int insertSql(EnvicloudCityAirLive cityair);
 
 	List<CityAir> getNow();
 

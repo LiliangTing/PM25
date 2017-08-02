@@ -11,6 +11,15 @@ public class City {
 	private String citycode;
 	private String cityname;
 	private String belong;
+	private String aqicode;
+
+	public String getAqicode() {
+		return aqicode;
+	}
+
+	public void setAqicode(String aqicode) {
+		this.aqicode = aqicode;
+	}
 
 	public String getCitycode() {
 		return citycode;
@@ -39,7 +48,7 @@ public class City {
 	@Override
 	public String toString() {
 		return "城市信息 [城市编号=" + citycode + ", 城市名称=" + cityname + ", 地级市名称="
-				+ belong + "]";
+				+ belong + "是否有空气质量" + aqicode + "]";
 	}
 
 }

@@ -2,10 +2,8 @@ package com.liliangliang.core.entry;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class CityAir {
-
+	private long id;
 	private String citycode;
 	private Date time;
 	private String aqi;
@@ -16,6 +14,32 @@ public class CityAir {
 	private String no2;
 	private String o3;
 	private String primary;
+	private Date createTime;
+	private City city;
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
+	}
 
 	public String getCitycode() {
 		return citycode;
