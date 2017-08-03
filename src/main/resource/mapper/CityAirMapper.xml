@@ -24,30 +24,30 @@
 	<resultMap type="MapData" id="MapDataMap">
 		<result property="value" column="aqi" />
 		<association property="name" column="citycode"
-			select="com.liliangliang.core.dao.getNameById" />
+			select="com.liliangliang.core.dao.CityDAO.getNameById" />
 	</resultMap>
-	<sql id="BasisSql">
+	<sql id="BasisSQL">
 		id,citycode,times,aqi,pm25,pm10,co,so2,no2,o3,prima,create_time
 	</sql>
-	<sql id="MapSql">
+	<sql id="MapSQL">
 		citycode,aqi
 	</sql>
-	<sql id="insertSql">
+	<sql id="insertSQL">
 		citycode,times,aqi,pm25,pm10,co,so2,no2,o3,prima
 	</sql>
-	<!-- <insert id="insertList"> insert into aqi( <include refid="insertSql" 
-		/> )values <foreach item="a" collection="list" separator=","> (#{a.aqi}, 
-		#{a.area} , #{a.co}, #{a.co_24h} , #{a.no2} , #{a.no2_24h}, #{a.o3}, #{a.o3_24h} 
-		, #{a.o3_8h}, #{a.o3_8h_24h} , #{a.pm10} , #{a.pm10_24h}, #{a.pm2_5}, #{a.pm2_5_24h}, 
-		#{a.position_name}, #{a.primary_pollutant}, #{a.quality}, #{a.so2}, #{a.so2_24h} 
-		, #{a.station_code} , #{a.time_point}) </foreach> </insert> -->
-
 	<insert id="insert">
-		insert into aqi(
-		<include refid="insertSql" />
+		insert into cityair(
+		<include refid="insertSQL" />
 		)values
 		(
 		#{citycode},#{time},#{aqi},#{pm25},#{pm10},#{co},#{so2},#{no2},#{o3},#{primary}
 		)
 	</insert>
+	<select id="getNew" resultMap="CityAirMap">
+		call cityair_new()
+	</select>
+	<select id="getNewMapData" resultMap="MapDataMap">
+
+		call cityair_new()
+	</select>
 </mapper>

@@ -13,6 +13,9 @@
 	<sql id="insertSql">
 		devid,citycode,stationname,lng,lat
 	</sql>
+	<sql id="devidSql">
+		devid
+	</sql>
 	<insert id="insert">
 		insert ignore into devices (
 		<include refid="insertSql" />
@@ -21,4 +24,10 @@
 			(#{d.devid},#{citycode},#{d.stationname},#{d.lng},#{d.lat})
 		</foreach>
 	</insert>
+	<select id="geyDevIdByAqicode" resultType="String">
+		select
+		<include refid="devidSql" />
+		from devices
+	</select>
+
 </mapper>

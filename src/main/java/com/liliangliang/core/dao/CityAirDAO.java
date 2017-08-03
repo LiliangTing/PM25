@@ -8,10 +8,10 @@ import com.liliangliang.envicloud.entry.EnvicloudCityAirLive;
 
 public interface CityAirDAO {
 
-	int insertSql(EnvicloudCityAirLive cityair);
+	int insert(EnvicloudCityAirLive cityair);
 
-	List<CityAir> getNow();
+	List<CityAir> getNew();
 
-	List<MapData> getMapData();
+	List<MapData> getNewMapData();
 
 }
