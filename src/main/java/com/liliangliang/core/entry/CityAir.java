@@ -54,7 +54,7 @@ public class CityAir {
 	}
 
 	public void setTime(Date time) {
-
+		this.time = time;
 	}
 
 	public String getAqi() {

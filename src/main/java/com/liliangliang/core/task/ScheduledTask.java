@@ -12,11 +12,8 @@ import com.liliangliang.core.dao.DeviceAirDAO;
 import com.liliangliang.core.dao.DeviceDAO;
 import com.liliangliang.core.dao.JsonsDAO;
 import com.liliangliang.core.entry.City;
-import com.liliangliang.core.entry.Device;
-import com.liliangliang.core.entry.DeviceAir;
 import com.liliangliang.envicloud.entry.EnvicloudCityAirLive;
 import com.liliangliang.envicloud.entry.EnvicloudCityAllDevice;
-import com.liliangliang.envicloud.entry.EnvicloudDeviceAir;
 import com.liliangliang.envicloud.entry.EnvicloudJsons;
 import com.liliangliang.envicloud.util.EnvicloudInfo;
 import com.liliangliang.envicloud.util.HttpUtil;
@@ -40,7 +37,7 @@ public class ScheduledTask {
 	 * 
 	 * @throws InterruptedException
 	 */
-	@Scheduled(cron = "0 0 * * * ?")
+	@Scheduled(cron = "0 2 * * * ?")
 	public void getCityAir() throws InterruptedException {
 		List<City> list = this.cityDAO.getByType(1);
 		for (City c : list) {
@@ -51,7 +48,9 @@ public class ScheduledTask {
 					EnvicloudInfo.CITYAIRLIVE));
 			EnvicloudCityAirLive e = JsonUtil.jsonConver(jsons,
 					EnvicloudCityAirLive.class, null);
-			this.cityAirDAO.insert(e);
+			if (e.getCitycode() != null && e.getCitycode() != "") {
+				this.cityAirDAO.insert(e);
+			}
 			Thread.sleep(100);// 线程睡眠，减小接口压力
 		}
 	}
@@ -61,7 +60,7 @@ public class ScheduledTask {
 	 * 
 	 * @throws InterruptedException
 	 */
-	@Scheduled(cron = "0 0 * * * ?")
+	@Scheduled(cron = "0 3 * * * ?")
 	public void getDeviceData() throws InterruptedException {
 		List<City> list = this.cityDAO.getByType(1);
 		for (City c : list) {
@@ -74,7 +73,6 @@ public class ScheduledTask {
 					EnvicloudCityAllDevice.class, null);
 			try {
 				this.deviceAirDAO.insert(e);
-				System.out.println(e.getCitycode() + "  " + e.getRcode());
 				Thread.sleep(1000);
 			} catch (Exception e1) {
 				e1.printStackTrace();

@@ -18,7 +18,7 @@
 		<result property="primary" column="prima" />
 		<result property="createTime" column="create_time" />
 		<association property="city" column="citycode" javaType="City"
-			select="com.liliangliang.core.dao.getById" />
+			select="com.liliangliang.core.dao.CityDAO.getById" />
 	</resultMap>
 	<!-- 地图需要的数据 -->
 	<resultMap type="MapData" id="MapDataMap">
@@ -47,7 +47,6 @@
 		call cityair_new()
 	</select>
 	<select id="getNewMapData" resultMap="MapDataMap">
-
 		call cityair_new()
 	</select>
 </mapper>

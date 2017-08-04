@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.liliangliang.core.dao.CityAirDAO;
 import com.liliangliang.core.entry.CityAir;
+import com.liliangliang.core.entry.MapData;
 import com.liliangliang.core.service.CityAirService;
 
 @Service("cityAirService")
@@ -18,4 +19,8 @@ public class CityAirServiceImpl implements CityAirService {
 		return this.cityAirDAO.getNew();
 	}
 
+	@Override
+	public List<MapData> getMapByNew() {
+		return this.cityAirDAO.getNewMapData();
+	}
 }

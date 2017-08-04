@@ -5,10 +5,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 // 定时器开启
-// @EnableScheduling
+@EnableScheduling
 @MapperScan("com.liliangliang.core.dao")
 public class Application extends SpringBootServletInitializer {
 	@Override
