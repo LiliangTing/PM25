@@ -33,11 +33,11 @@ public class ScheduledTask {
 	private DeviceAirDAO deviceAirDAO;
 
 	/**
-	 * 每小时获取一次
+	 * 每小时获取一次 收集平均数据
 	 * 
 	 * @throws InterruptedException
 	 */
-	@Scheduled(cron = "0 2 * * * ?")
+	@Scheduled(cron = "0 1 * * * ?")
 	public void getCityAir() throws InterruptedException {
 		List<City> list = this.cityDAO.getByType(1);
 		for (City c : list) {
@@ -56,11 +56,11 @@ public class ScheduledTask {
 	}
 
 	/**
-	 * 每小时获取一次
+	 * 每小时获取一次 收集监测点的数据
 	 * 
 	 * @throws InterruptedException
 	 */
-	@Scheduled(cron = "0 3 * * * ?")
+	@Scheduled(cron = "0 1 * * * ?")
 	public void getDeviceData() throws InterruptedException {
 		List<City> list = this.cityDAO.getByType(1);
 		for (City c : list) {
