@@ -1,5 +1,6 @@
 package com.liliangliang.core.entry;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Date;
  * @author Administrator
  * 
  */
-public class Weather {
+public class Weather implements Serializable{
 	private int id;
 	// 城市编码
 	private String citycode;

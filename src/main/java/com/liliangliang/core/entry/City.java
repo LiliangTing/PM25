@@ -1,12 +1,14 @@
 package com.liliangliang.core.entry;
 
+import java.io.Serializable;
+
 /**
  * 城市信息
  * 
  * @author Administrator
  * 
  */
-public class City {
+public class City implements Serializable{
 
 	private String citycode;
 	private String cityname;

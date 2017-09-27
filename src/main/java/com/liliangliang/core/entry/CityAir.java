@@ -1,10 +1,12 @@
 package com.liliangliang.core.entry;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class CityAir {
+public class CityAir implements Serializable {
 	private long id;
 	private String citycode;
+	private String cityname;
 	private Date time;
 	private String aqi;
 	private String pm25;
@@ -15,7 +17,6 @@ public class CityAir {
 	private String o3;
 	private String primary;
 	private Date createTime;
-	private City city;
 
 	public Date getCreateTime() {
 		return createTime;
@@ -33,12 +34,13 @@ public class CityAir {
 		this.id = id;
 	}
 
-	public City getCity() {
-		return city;
+
+	public String getCityname() {
+		return cityname;
 	}
 
-	public void setCity(City city) {
-		this.city = city;
+	public void setCityname(String cityname) {
+		this.cityname = cityname;
 	}
 
 	public String getCitycode() {

@@ -17,30 +17,28 @@
 		<result property="no2" column="no2" />
 		<result property="primary" column="prima" />
 		<result property="createTime" column="create_time" />
-		<association property="city" column="citycode" javaType="City"
-			select="com.liliangliang.core.dao.CityDAO.getById" />
+		<result property="cityname" column="cityname" />
 	</resultMap>
 	<!-- 地图需要的数据 -->
 	<resultMap type="MapData" id="MapDataMap">
 		<result property="value" column="aqi" />
-		<association property="name" column="citycode"
-			select="com.liliangliang.core.dao.CityDAO.getNameById" />
+		<result property="name" column="cityname" />
 	</resultMap>
 	<sql id="BasisSQL">
-		id,citycode,times,aqi,pm25,pm10,co,so2,no2,o3,prima,create_time
+		id,citycode,cityname,times,aqi,pm25,pm10,co,so2,no2,o3,prima,create_time
 	</sql>
 	<sql id="MapSQL">
 		citycode,aqi
 	</sql>
 	<sql id="insertSQL">
-		citycode,times,aqi,pm25,pm10,co,so2,no2,o3,prima
+		citycode,cityname,times,aqi,pm25,pm10,co,so2,no2,o3,prima
 	</sql>
 	<insert id="insert">
 		insert into cityair(
 		<include refid="insertSQL" />
 		)values
 		(
-		#{citycode},#{time},#{aqi},#{pm25},#{pm10},#{co},#{so2},#{no2},#{o3},#{primary}
+		#{citycode},(select cityname from city where citycode=#{citycode}),#{time},#{aqi},#{pm25},#{pm10},#{co},#{so2},#{no2},#{o3},#{primary}
 		)
 	</insert>
 	<select id="getNew" resultMap="CityAirMap">
@@ -49,4 +47,9 @@
 	<select id="getNewMapData" resultMap="MapDataMap">
 		call cityair_new()
 	</select>
+	
+	
+	<update id="setCotyname">
+	update cityair set cityname=#{cityname} where citycode=#{citycode} 
+	</update>
 </mapper>

@@ -1,12 +1,14 @@
 package com.liliangliang.core.entry;
 
+import java.io.Serializable;
+
 /**
  * 监测点信息
  * 
  * @author Administrator
  * 
  */
-public class Device {
+public class Device implements Serializable{
 	// 城市编码
 	private String citycode;
 	// 设备编号

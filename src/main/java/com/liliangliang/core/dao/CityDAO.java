@@ -3,7 +3,6 @@ package com.liliangliang.core.dao;
 import java.util.List;
 
 import com.liliangliang.core.entry.City;
-import com.liliangliang.envicloud.entry.EnvicloudCities;
 
 public interface CityDAO {
 	/**

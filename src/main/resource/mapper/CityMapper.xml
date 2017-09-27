@@ -6,8 +6,9 @@
 	<resultMap type="City" id="CityMap">
 		<id property="citycode" column="citycode" />
 		<result property="cityname" column="cityname" />
-		<result property="districtcn" column="belong" />
+		<result property="belong" column="districtcn" />
 		<result property="cityname" column="cityname" />
+		<result property="aqicode" column="aqicode" />
 	</resultMap>
 	<sql id="BasisSql">
 		citycode,cityname,districtcn,aqicode
@@ -40,4 +41,5 @@
 		update city set aqicode =1 where citycode
 		=#{citycode}
 	</update>
+	
 </mapper>

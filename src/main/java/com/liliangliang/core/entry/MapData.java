@@ -1,12 +1,14 @@
 package com.liliangliang.core.entry;
 
+import java.io.Serializable;
+
 /**
  * 为地图显示制作的类
  * 
  * @author Administrator
  * 
  */
-public class MapData {
+public class MapData implements Serializable{
 
 	private String name;
 	private int value;

@@ -1,8 +1,9 @@
 package com.liliangliang.core.entry;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class DeviceAir {
+public class DeviceAir implements Serializable{
 	private long id;
 	private String devid;
 	private String citycode;
