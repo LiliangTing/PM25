@@ -10,7 +10,7 @@ public class EnvicloudInfo {
 	/**
 	 * 用户私钥
 	 */
-	public static final String ACCESSKEY = "/BGLSAWFUZZE1MDE1NTA2OTY1NDG=";
+	public static final String ACCESSKEY = "";
 	/**
 	 * 基础URL
 	 */

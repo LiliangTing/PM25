@@ -81,7 +81,7 @@
 						<td>{{air.o3}}</td>
 						<td>{{air.so2}}</td>
 						<td>{{air.primary}}</td>
-						<td>{{air.time}}</td>
+						<td>{{air.time | time}}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -111,6 +111,10 @@
 				console.log("!!!!");
 			}
 		});
+		Vue.filter('time', function(value) {
+			return new Date(parseInt(value)).toLocaleString().replace(/年|月/,
+					"-").replace(/日/, " ");
+		})
 	}
 </script>
 </html>
