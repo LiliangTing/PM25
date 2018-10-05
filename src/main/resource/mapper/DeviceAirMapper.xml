@@ -1,39 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.liliangliang.core.dao.DeviceAirDAO">
-	<!-- 基本的映射 -->
-	<resultMap type="DeviceAir" id="DeviceAirMap">
-		<id property="id" column="id" />
-		<result property="devid" column="citycode" />
-		<result property="citycode" column="citycode" />
-		<result property="cityname" column="cityname" />
-		<result property="time" column="times" />
-		<result property="aqi" column="aqi" />
-		<result property="pm25" column="pm25" />
-		<result property="pm10" column="pm10" />
-		<result property="co" column="co" />
-		<result property="so2" column="so2" />
-		<result property="no2" column="no2" />
-		<result property="o3" column="o3" />
-		<result property="prkey" column="prkey" />
-		<result property="stationname" column="stationname" />
-		<result property="createTime" column="create_time" />
-	</resultMap>
-	<sql id="BasisSQL">
-		id,devid,stationname,citycode,cityname,times,aqi,pm25,pm10,co,so2,no2,o3,prkey,create_time
+    <!-- 基本的映射 -->
+    <resultMap type="DeviceAir" id="DeviceAirMap">
+        <id property="id" column="id"/>
+        <result property="cityname" column="cityname"/>
+        <result property="time" column="times"/>
+        <result property="aqi" column="aqi"/>
+        <result property="pm25" column="pm25"/>
+        <result property="pm10" column="pm10"/>
+        <result property="co" column="co"/>
+        <result property="so2" column="so2"/>
+        <result property="no2" column="no2"/>
+        <result property="o3" column="o3"/>
+        <result property="prkey" column="prkey"/>
+        <result property="stationname" column="stationname"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+    <sql id="BasisSQL">
+		id,stationname,cityname,times,aqi,pm25,pm10,co,so2,no2,o3,prkey,create_time
 	</sql>
-	<sql id="insertSQL">
-		devid,stationname,citycode,cityname,times,aqi,pm25,pm10,co,so2,o3,no2,prkey
+    <sql id="insertSQL">
+		stationname,cityname,times,aqi,pm25,pm10,co,so2,o3,no2,prkey
 	</sql>
-	<insert id="insert">
-		insert ignore into deviceair(
-		<include refid="insertSQL" />
-		)values
-		<foreach item="da" collection="info" separator=",">
-			(#{da.devid},#{da.stationname},#{citycode},#{cityname},#{time},
-			#{da.aqi},#{da.pm25},#{da.pm10},#{da.co},#{da.so2},#{da.o3},#{da.no2},#{da.prkey})
-		</foreach>
-	</insert>
+
 </mapper>

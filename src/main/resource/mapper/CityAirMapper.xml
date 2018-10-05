@@ -1,55 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.liliangliang.core.dao.CityAirDAO">
-	<!-- 基本的映射 -->
-	<resultMap type="CityAir" id="CityAirMap">
-		<id property="id" column="id" />
-		<result property="citycode" column="citycode" />
-		<result property="time" column="times" />
-		<result property="aqi" column="aqi" />
-		<result property="pm25" column="pm25" />
-		<result property="pm10" column="pm10" />
-		<result property="co" column="co" />
-		<result property="so2" column="so2" />
-		<result property="o3" column="o3" />
-		<result property="no2" column="no2" />
-		<result property="primary" column="prima" />
-		<result property="createTime" column="create_time" />
-		<result property="cityname" column="cityname" />
-	</resultMap>
-	<!-- 地图需要的数据 -->
-	<resultMap type="MapData" id="MapDataMap">
-		<result property="value" column="aqi" />
-		<result property="name" column="cityname" />
-	</resultMap>
-	<sql id="BasisSQL">
-		id,citycode,cityname,times,aqi,pm25,pm10,co,so2,no2,o3,prima,create_time
+    <!-- 基本的映射 -->
+    <resultMap type="CityAir" id="CityAirMap">
+        <id property="id" column="id"/>
+        <result property="cityname" column="cityname"/>
+        <result property="time" column="times"/>
+        <result property="aqi" column="aqi"/>
+        <result property="pm25" column="pm25"/>
+        <result property="pm10" column="pm10"/>
+        <result property="co" column="co"/>
+        <result property="so2" column="so2"/>
+        <result property="o3" column="o3"/>
+        <result property="no2" column="no2"/>
+        <result property="primary" column="prima"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+    <!-- 地图需要的数据 -->
+    <resultMap type="MapData" id="MapDataMap">
+        <result property="value" column="aqi"/>
+        <result property="name" column="cityname"/>
+    </resultMap>
+    <sql id="BasisSQL">
+		id,cityname,times,aqi,pm25,pm10,co,so2,no2,o3,prima,create_time
 	</sql>
-	<sql id="MapSQL">
-		citycode,aqi
+    <sql id="MapSQL">
+		cityname,aqi
 	</sql>
-	<sql id="insertSQL">
-		citycode,cityname,times,aqi,pm25,pm10,co,so2,no2,o3,prima
+    <sql id="insertSQL">
+		citynametimes,aqi,pm25,pm10,co,so2,no2,o3,prima
 	</sql>
-	<insert id="insert">
-		insert into cityair(
-		<include refid="insertSQL" />
-		)values
-		(
-		#{citycode},(select cityname from city where citycode=#{citycode}),#{time},#{aqi},#{pm25},#{pm10},#{co},#{so2},#{no2},#{o3},#{primary}
-		)
-	</insert>
-	<select id="getNew" resultMap="CityAirMap">
+    <select id="getNew" resultMap="CityAirMap">
 		call cityair_new()
 	</select>
-	<select id="getNewMapData" resultMap="MapDataMap">
+    <select id="getNewMapData" resultMap="MapDataMap">
 		call cityair_new()
 	</select>
-	
-	
-	<update id="setCotyname">
-	update cityair set cityname=#{cityname} where citycode=#{citycode} 
-	</update>
 </mapper>

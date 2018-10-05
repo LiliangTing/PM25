@@ -1,12 +1,9 @@
 package com.liliangliang.core.entry;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class DeviceAir implements Serializable{
+public class DeviceAir {
 	private long id;
-	private String devid;
-	private String citycode;
 	private String cityname;
 	private Date time;
 	private String aqi;
@@ -34,22 +31,6 @@ public class DeviceAir implements Serializable{
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public String getDevid() {
-		return devid;
-	}
-
-	public void setDevid(String devid) {
-		this.devid = devid;
-	}
-
-	public String getCitycode() {
-		return citycode;
-	}
-
-	public void setCitycode(String citycode) {
-		this.citycode = citycode;
 	}
 
 	public String getCityname() {
@@ -142,12 +123,20 @@ public class DeviceAir implements Serializable{
 
 	@Override
 	public String toString() {
-		return "DeviceAir [id=" + id + ", devid=" + devid + ", citycode="
-				+ citycode + ", cityname=" + cityname + ", time=" + time
-				+ ", aqi=" + aqi + ", pm25=" + pm25 + ", pm10=" + pm10
-				+ ", co=" + co + ", so2=" + so2 + ", no2=" + no2 + ", o3=" + o3
-				+ ", prkey=" + prkey + ", stationname=" + stationname
-				+ ", createTime=" + createTime + "]";
+		return "DeviceAir{" +
+						"id=" + id +
+						", cityname='" + cityname + '\'' +
+						", time=" + time +
+						", aqi='" + aqi + '\'' +
+						", pm25='" + pm25 + '\'' +
+						", pm10='" + pm10 + '\'' +
+						", co='" + co + '\'' +
+						", so2='" + so2 + '\'' +
+						", no2='" + no2 + '\'' +
+						", o3='" + o3 + '\'' +
+						", prkey='" + prkey + '\'' +
+						", stationname='" + stationname + '\'' +
+						", createTime=" + createTime +
+						'}';
 	}
-
 }
