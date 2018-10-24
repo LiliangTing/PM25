@@ -1,5 +1,6 @@
 package com.liliangliang.core.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import com.liliangliang.core.entry.CityAir;
@@ -11,5 +12,8 @@ public interface CityAirDAO {
   List<CityAir> getNew();
 
   List<MapData> getNewMapData();
+
+
+  List<CityAir> getByDate(Date date);
 
 }
