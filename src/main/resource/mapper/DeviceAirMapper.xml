@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.liliangliang.core.dao.DeviceAirDAO">
     <!-- 基本的映射 -->
-    <resultMap type="DeviceAir" id="DeviceAirMap">
+    <resultMap type="com.liliangliang.core.entry.DeviceAir" id="DeviceAirMap">
         <id property="id" column="id"/>
         <result property="cityname" column="cityname"/>
         <result property="time" column="times"/>
@@ -26,4 +26,18 @@
 		stationname,cityname,times,aqi,pm25,pm10,co,so2,o3,no2,prkey
 	</sql>
 
+    <select id="getByNew" resultMap="DeviceAirMap">
+
+        select
+        <include refid="BasisSQL"/>
+        from deviceair where cityname = #{cityName} and
+        times = (select max(times) from deviceair ) order by stationname
+    </select>
+    <select id="getByDate" resultMap="DeviceAirMap">
+
+        select
+        <include refid="BasisSQL"/>
+        from deviceair where cityname = #{cityName} and
+        times = #{date}
+    </select>
 </mapper>

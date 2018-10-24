@@ -35,6 +35,12 @@
     <select id="getNew" resultMap="CityAirMap">
 		call cityair_new()
 	</select>
+
+    <select id="getByDate" resultMap="CityAirMap">
+        select
+        <include refid="BasisSQL"/>
+        from cityair where times = #{date}
+    </select>
     <select id="getNewMapData" resultMap="MapDataMap">
 		call cityair_new()
 	</select>

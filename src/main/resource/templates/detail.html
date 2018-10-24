@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"/>
-    <title>首页</title>
+    <title>城市详情</title>
     <link rel="stylesheet" th:href="@{css/bootstrap.min.css}" href="../../css/bootstrap.min.css"/>
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
@@ -16,9 +16,8 @@
         </div>
         <div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/index">实时数据</a></li>
-                <li class=""><a href="/map">空气质量图</a></li>
-                <li class=""><a href="/history">历史</a></li>
+                <li class="active"><a href="index">实时数据</a></li>
+                <li class=""><a href="map">空气质量图</a></li>
             </ul>
         </div>
     </div>
@@ -29,6 +28,7 @@
             <thead>
             <tr class="center">
                 <th>aqi</th>
+                <th>监测点</th>
                 <th>城市</th>
                 <th>PM2.5<br/>(μg/m<sup>3</sup>)
                 </th>
@@ -49,14 +49,15 @@
             <tbody>
             <tr th:each="a : ${list}">
                 <td th:text="${a.aqi}"></td>
-                <td><a th:href="'/detail/'+${a.cityname}" th:text="${a.cityname}"></a></td>
+                <td th:text="${a.stationname}"></td>
+                <td th:text="${a.cityname}"></td>
                 <td th:text="${a.pm25}"></td>
                 <td th:text="${a.pm10}"></td>
                 <td th:text="${a.co}"></td>
                 <td th:text="${a.no2}"></td>
                 <td th:text="${a.o3}"></td>
                 <td th:text="${a.so2}"></td>
-                <td th:text="${a.primary}"></td>
+                <td th:text="${a.prkey}"></td>
                 <td th:text="${#dates.format(a.time,'yyyy-MM-dd HH:mm:ss')}"></td>
             </tr>
             </c:forEach>

@@ -3,7 +3,10 @@
 <head>
     <meta charset="utf-8"/>
     <title>首页</title>
-    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}" href="../../css/bootstrap.min.css"/>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
+          rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
 
@@ -16,14 +19,22 @@
         </div>
         <div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/index">实时数据</a></li>
-                <li class=""><a href="/map">空气质量图</a></li>
-                <li class=""><a href="/history">历史</a></li>
+                <li class="active"><a href="index">实时数据</a></li>
+                <li class=""><a href="map">空气质量图</a></li>
             </ul>
         </div>
     </div>
 </nav>
 <div class="row">
+    <form class="form-horizontal col-md-offset-1" role="form">
+        <div class="form-group">
+            <label class="col-sm-1 control-label" for="datetime">时间</label>
+            <div class="col-sm-2">
+                <input type='text' class="form-control " id='datetime'/>
+            </div>
+            <button type="button" onclick="getDate()" class="btn btn-primary">查看</button>
+        </div>
+    </form>
     <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
         <table id="example" class="table table-striped table-hover">
             <thead>
@@ -49,7 +60,7 @@
             <tbody>
             <tr th:each="a : ${list}">
                 <td th:text="${a.aqi}"></td>
-                <td><a th:href="'/detail/'+${a.cityname}" th:text="${a.cityname}"></a></td>
+                <td><a th:href="'/'+${a.cityname}" th:text="${a.cityname}"></a></td>
                 <td th:text="${a.pm25}"></td>
                 <td th:text="${a.pm10}"></td>
                 <td th:text="${a.co}"></td>
@@ -66,7 +77,24 @@
 </div>
 
 </body>
-<script type="text/javascript" src="../../js/jquery.min.js"></script>
-<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.18.1/moment-with-locales.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 
+<script>
+    $(function () {
+        $("#datetime").datetimepicker({
+            format: 'YYYY-MM-DD HH',
+            locale: moment.locale('zh-cn')
+        });
+    });
+
+    function getDate(){
+       var date= $("#datetime").val();
+        window.location.href='/'+date
+    }
+</script>
 </html>
